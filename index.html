@@ -1,0 +1,150 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Your Name — Personal Blog</title> <meta name="description" content="Personal blog of Your Name — projects, notes, and learnings." /> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> <style> :root { --bg: #0b0f19; --card: #111729; --text: #e6eaf2; --muted: #9aa4b2; --accent: #4f8cff; --accent-2: #8a5cf6; --link: #9ad1ff; --code-bg: #0f1424; --border: #22314d; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; } a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
+text
+.wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 80px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0 8px; border-bottom: 1px solid var(--border); position: sticky; top: 0; backdrop-filter: blur(6px); background: color-mix(in oklab, var(--bg) 80%, transparent); z-index: 10;}
+.brand { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: grid; place-items: center; color: white; font-weight: 700; }
+.title { font-size: 18px; font-weight: 700; }
+nav { display: flex; gap: 16px; font-size: 14px; }
+.pill { color: var(--muted); padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; }
+.pill:hover { border-color: var(--link); }
+
+.hero { display: grid; gap: 14px; padding: 24px 0 8px; }
+.hero h1 { font-size: 28px; margin: 0; }
+.hero p { color: var(--muted); margin: 0; line-height: 1.65; }
+
+.grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 16px; }
+@media (min-width: 760px) { .grid { grid-template-columns: 1.2fr 0.8fr; } }
+
+.card { background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), var(--card)); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+.card h2 { margin: 0 0 8px; font-size: 18px; }
+.meta { color: var(--muted); font-size: 13px; }
+.post { display: grid; gap: 8px; padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--code-bg); }
+.post h3 { margin: 0; font-size: 18px; }
+.post p { margin: 0; color: #cfd6e4; line-height: 1.65; }
+.tag { font-size: 12px; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; border-radius: 999px; }
+.post-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 10px; }
+.btn { display: inline-block; padding: 8px 12px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font-weight: 600; }
+.btn:hover { opacity: 0.95; text-decoration: none; }
+.list { display: grid; gap: 12px; }
+
+pre, code { background: var(--code-bg); color: #e9ecf7; border-radius: 8px; }
+pre { padding: 14px; overflow: auto; border: 1px solid var(--border); }
+code { padding: 2px 6px; border: 1px solid var(--border); }
+
+footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+</style> </head> <body> <div class="wrap"> <header> <div class="brand"> <div class="avatar">YN</div> <div class="title">Your Name — Blog</div> </div> <nav> <a class="pill" href="#posts">Posts</a> <a class="pill" href="#about">About</a> <a class="pill" href="#projects">Projects</a> <a class="pill" href="#contact">Contact</a> </nav> </header>
+text
+<section class="hero">
+  <h1>Hi, this is Your Name — sharing notes on ML, data, and web dev.</h1>
+  <p>Entry-level developer focused on AI/ML, data science, and practical engineering. Writing about projects, mistakes, and what worked. This blog is a single-file site deployable on GitHub Pages in minutes. Replace text and commit to publish. [Guide below]</p>
+</section>
+
+<div class="grid">
+  <main class="card">
+    <h2 id="posts">Latest posts</h2>
+    <div class="list">
+
+      <article class="post">
+        <div class="meta">Sep 2025 -  4 min -  ML, CV</div>
+        <h3>What I learned building an emotion recognition pipeline</h3>
+        <p>Notes from merging eye-gaze and head-rotation features, taming pandas merge keys, and avoiding empty DataFrames when joining multiple CSVs.</p>
+        <div class="post-footer">
+          <span class="tag">pandas</span>
+          <a class="btn" href="#post-emotion-pipeline">Read</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="meta">Sep 2025 -  3 min -  Web</div>
+        <h3>Shipping a one-file blog on GitHub Pages</h3>
+        <p>A minimal approach: plain HTML + CSS, zero build, instant deploy, custom domain ready later if needed.</p>
+        <div class="post-footer">
+          <span class="tag">github-pages</span>
+          <a class="btn" href="#post-onefile">Read</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="meta">Aug 2025 -  5 min -  Python</div>
+        <h3>Speeding up CSV feature engineering</h3>
+        <p>Practical tricks for memory-safe merges, dtype selection, and saving clean outputs with to_csv reliably.</p>
+        <div class="post-footer">
+          <span class="tag">python</span>
+          <a class="btn" href="#post-csv">Read</a>
+        </div>
+      </article>
+
+    </div>
+
+    <hr style="margin:16px 0; border:0; border-top:1px solid var(--border);" />
+
+    <article id="post-emotion-pipeline" class="post">
+      <div class="meta">Deep-dive -  ML</div>
+      <h3>What I learned building an emotion recognition pipeline</h3>
+      <p>Key idea: lock down consistent keys before merging multiple feature tables. Inspect columns with head(), dtypes, and value_counts() to catch drift early.</p>
+      <pre><code># pandas merge skeleton
+import pandas as pd
+
+df_gaze = pd.read_csv("gaze.csv")
+df_head = pd.read_csv("head.csv")
+df_labels = pd.read_csv("labels.csv")
+
+ensure common key exists and matches dtype
+for d in (df_gaze, df_head, df_labels):
+d["clip_id"] = d["clip_id"].astype(str)
+
+features = df_gaze.merge(df_head, on="clip_id", how="inner")
+data = features.merge(df_labels, on="clip_id", how="inner")
+data.to_csv("dataset_final.csv", index=False)</code></pre>
+<p>Common pitfalls: mismatched dtypes for keys, silent suffix collisions, and accidental outer joins that produce NaNs in labels. Keep merges inner until coverage is verified, then widen if needed.</p>
+</article>
+
+text
+    <article id="post-onefile" class="post">
+      <div class="meta">Guide -  Web</div>
+      <h3>Shipping a one-file blog on GitHub Pages</h3>
+      <ol style="margin:0 0 0 18px; padding:0 0 0 6px;">
+        <li>Create a repo (any name) and add index.html with this file’s content.</li>
+        <li>Commit and push, or upload via the web UI.</li>
+        <li>Repo → Settings → Pages → Set Branch: main, Folder: / (root) → Save.</li>
+        <li>Open the URL shown at the top of the Pages section — that’s your blog.</li>
+      </ol>
+      <p>Optional: pick a custom theme later with Jekyll, but this file is already production-ready and fast.</p>
+    </article>
+
+    <article id="post-csv" class="post">
+      <div class="meta">Notes -  Python</div>
+      <h3>Speeding up CSV feature engineering</h3>
+      <ul style="margin:0 0 0 18px; padding:0 0 0 6px;">
+        <li>Specify dtypes on read_csv to save RAM.</li>
+        <li>Use category for low-cardinality strings (labels).</li>
+        <li>Validate merges by counting rows before/after each step.</li>
+        <li>Write outputs with index=False and newline handling.</li>
+      </ul>
+    </article>
+  </main>
+
+  <aside class="card">
+    <h2 id="about">About</h2>
+    <p>Entry-level AI/ML engineer and full-stack learner. Interests: emotion recognition, data pipelines, and accessible web UIs.</p>
+
+    <h2 id="projects" style="margin-top:18px;">Projects</h2>
+    <ul class="list">
+      <li><strong>Airlines Seat Reservation System</strong> — HTML, CSS, Bootstrap, JS, PHP, MySQL.</li>
+      <li><strong>Emotion Recognition</strong> — eye-gaze + head-rotation features with labels.</li>
+      <li><strong>Login/Boarding-pass Simulation</strong> — web demo with auth and state.</li>
+    </ul>
+
+    <h2 id="contact" style="margin-top:18px;">Contact</h2>
+    <p>Email: yourname@example.com</p>
+    <p>GitHub: github.com/yourusername</p>
+    <p>LinkedIn: linkedin.com/in/yourhandle</p>
+  </aside>
+</div>
+
+<footer>
+  <div>© <span id="y"></span> Your Name</div>
+  <div>Fast, single-file blog on GitHub Pages</div>
+</footer>
+</div> <script> document.getElementById('y').textContent = new Date().getFullYear(); </script> </body> </html>
