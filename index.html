@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Your Name — Personal Blog</title> <meta name="description" content="Personal blog of Your Name — projects, notes, and learnings." /> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> <style> :root { --bg: #0b0f19; --card: #111729; --text: #e6eaf2; --muted: #9aa4b2; --accent: #4f8cff; --accent-2: #8a5cf6; --link: #9ad1ff; --code-bg: #0f1424; --border: #22314d; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; } a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Soumen Pal — Personal Blog</title> <meta name="description" content="Personal blog of Soumen Pal — software engineering, AI/ML, and full‑stack projects." /> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> <style> :root { --bg: #0b0f19; --card: #111729; --text: #e6eaf2; --muted: #9aa4b2; --accent: #4f8cff; --accent-2: #8a5cf6; --link: #9ad1ff; --code-bg: #0f1424; --border: #22314d; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; } a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
 text
 .wrap { max-width: 880px; margin: 0 auto; padding: 28px 20px 80px; }
 header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0 8px; border-bottom: 1px solid var(--border); position: sticky; top: 0; backdrop-filter: blur(6px); background: color-mix(in oklab, var(--bg) 80%, transparent); z-index: 10;}
@@ -33,11 +33,12 @@ pre { padding: 14px; overflow: auto; border: 1px solid var(--border); }
 code { padding: 2px 6px; border: 1px solid var(--border); }
 
 footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-</style> </head> <body> <div class="wrap"> <header> <div class="brand"> <div class="avatar">YN</div> <div class="title">Your Name — Blog</div> </div> <nav> <a class="pill" href="#posts">Posts</a> <a class="pill" href="#about">About</a> <a class="pill" href="#projects">Projects</a> <a class="pill" href="#contact">Contact</a> </nav> </header>
+.contact a { margin-right: 10px; }
+</style> </head> <body> <div class="wrap"> <header> <div class="brand"> <div class="avatar">SP</div> <div class="title">Soumen Pal — Blog</div> </div> <nav> <a class="pill" href="#posts">Posts</a> <a class="pill" href="#about">About</a> <a class="pill" href="#projects">Projects</a> <a class="pill" href="#contact">Contact</a> </nav> </header>
 text
 <section class="hero">
-  <h1>Hi, this is Your Name — sharing notes on ML, data, and web dev.</h1>
-  <p>Entry-level developer focused on AI/ML, data science, and practical engineering. Writing about projects, mistakes, and what worked. This blog is a single-file site deployable on GitHub Pages in minutes. Replace text and commit to publish. [Guide below]</p>
+  <h1>Hi, this is Soumen Pal — sharing notes on software engineering, AI/ML, and full‑stack development.</h1>
+  <p>Motivated fresher with hands‑on internships in Data Engineering (AWS) and AI‑ML, building real projects and writing up learnings that help others. This single‑file blog can be deployed instantly on GitHub Pages. Commit as index.html at the publishing root and enable Pages from Settings. [Guide below]</p>
 </section>
 
 <div class="grid">
@@ -46,32 +47,32 @@ text
     <div class="list">
 
       <article class="post">
-        <div class="meta">Sep 2025 -  4 min -  ML, CV</div>
-        <h3>What I learned building an emotion recognition pipeline</h3>
-        <p>Notes from merging eye-gaze and head-rotation features, taming pandas merge keys, and avoiding empty DataFrames when joining multiple CSVs.</p>
+        <div class="meta">Sep 2025 -  4 min -  Data Eng</div>
+        <h3>Automating ETL on AWS: S3 → Glue → Athena</h3>
+        <p>Notes from an internship: wiring S3 triggers to Lambda, orchestrating Glue jobs with Step Functions, and performance tips that cut processing time by ~40%.</p>
         <div class="post-footer">
-          <span class="tag">pandas</span>
-          <a class="btn" href="#post-emotion-pipeline">Read</a>
+          <span class="tag">aws</span>
+          <a class="btn" href="#post-aws-etl">Read</a>
         </div>
       </article>
 
       <article class="post">
-        <div class="meta">Sep 2025 -  3 min -  Web</div>
-        <h3>Shipping a one-file blog on GitHub Pages</h3>
-        <p>A minimal approach: plain HTML + CSS, zero build, instant deploy, custom domain ready later if needed.</p>
+        <div class="meta">Sep 2025 -  3 min -  ML</div>
+        <h3>LSTM traffic prediction: accuracy vs runtime</h3>
+        <p>Feature engineering for sequence data, handling class imbalance, and profiling to achieve 92% accuracy with ~30% faster runtime.</p>
+        <div class="post-footer">
+          <span class="tag">tensorflow</span>
+          <a class="btn" href="#post-traffic-lstm">Read</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="meta">Aug 2025 -  3 min -  Web</div>
+        <h3>Shipping a one‑file blog on GitHub Pages</h3>
+        <p>A minimal approach: plain HTML + CSS, zero build, instant deploy, and easy upgrades to a theme later.</p>
         <div class="post-footer">
           <span class="tag">github-pages</span>
           <a class="btn" href="#post-onefile">Read</a>
-        </div>
-      </article>
-
-      <article class="post">
-        <div class="meta">Aug 2025 -  5 min -  Python</div>
-        <h3>Speeding up CSV feature engineering</h3>
-        <p>Practical tricks for memory-safe merges, dtype selection, and saving clean outputs with to_csv reliably.</p>
-        <div class="post-footer">
-          <span class="tag">python</span>
-          <a class="btn" href="#post-csv">Read</a>
         </div>
       </article>
 
@@ -79,72 +80,79 @@ text
 
     <hr style="margin:16px 0; border:0; border-top:1px solid var(--border);" />
 
-    <article id="post-emotion-pipeline" class="post">
-      <div class="meta">Deep-dive -  ML</div>
-      <h3>What I learned building an emotion recognition pipeline</h3>
-      <p>Key idea: lock down consistent keys before merging multiple feature tables. Inspect columns with head(), dtypes, and value_counts() to catch drift early.</p>
-      <pre><code># pandas merge skeleton
-import pandas as pd
-
-df_gaze = pd.read_csv("gaze.csv")
-df_head = pd.read_csv("head.csv")
-df_labels = pd.read_csv("labels.csv")
-
-ensure common key exists and matches dtype
-for d in (df_gaze, df_head, df_labels):
-d["clip_id"] = d["clip_id"].astype(str)
-
-features = df_gaze.merge(df_head, on="clip_id", how="inner")
-data = features.merge(df_labels, on="clip_id", how="inner")
-data.to_csv("dataset_final.csv", index=False)</code></pre>
-<p>Common pitfalls: mismatched dtypes for keys, silent suffix collisions, and accidental outer joins that produce NaNs in labels. Keep merges inner until coverage is verified, then widen if needed.</p>
-</article>
-
+    <article id="post-aws-etl" class="post">
+      <div class="meta">Deep‑dive -  AWS</div>
+      <h3>Automating ETL on AWS: S3 → Glue → Athena</h3>
+      <p>Pipeline sketch: S3 upload triggers Lambda for validation, Step Functions orchestrates Glue ETL, and Athena queries parquet outputs for BI. Add partitions and compression early to keep costs down.</p>
+<pre><code># Sample Glue SQL (Athena) partitioned table CREATE EXTERNAL TABLE IF NOT EXISTS analytics.events ( event_time timestamp, user_id string, action string, payload string ) PARTITIONED BY (dt string) STORED AS PARQUET LOCATION 's3://bucket/analytics/events/' TBLPROPERTIES ('parquet.compress'='SNAPPY');</code></pre>
 text
-    <article id="post-onefile" class="post">
-      <div class="meta">Guide -  Web</div>
-      <h3>Shipping a one-file blog on GitHub Pages</h3>
-      <ol style="margin:0 0 0 18px; padding:0 0 0 6px;">
-        <li>Create a repo (any name) and add index.html with this file’s content.</li>
-        <li>Commit and push, or upload via the web UI.</li>
-        <li>Repo → Settings → Pages → Set Branch: main, Folder: / (root) → Save.</li>
-        <li>Open the URL shown at the top of the Pages section — that’s your blog.</li>
-      </ol>
-      <p>Optional: pick a custom theme later with Jekyll, but this file is already production-ready and fast.</p>
+      <p>Reliability tips: store data contracts in a repo, validate schema in Lambda, and surface metrics (success rates, durations) to CloudWatch dashboards for quick feedback.</p>
     </article>
 
-    <article id="post-csv" class="post">
-      <div class="meta">Notes -  Python</div>
-      <h3>Speeding up CSV feature engineering</h3>
+    <article id="post-traffic-lstm" class="post">
+      <div class="meta">Project -  ML</div>
+      <h3>LSTM traffic prediction: accuracy vs runtime</h3>
       <ul style="margin:0 0 0 18px; padding:0 0 0 6px;">
-        <li>Specify dtypes on read_csv to save RAM.</li>
-        <li>Use category for low-cardinality strings (labels).</li>
-        <li>Validate merges by counting rows before/after each step.</li>
-        <li>Write outputs with index=False and newline handling.</li>
+        <li>Model: stacked LSTM with early stopping and learning‑rate scheduling.</li>
+        <li>Data: engineered temporal lags, normalization, and windowed sequences.</li>
+        <li>Results: ~92% accuracy with ~30% faster runtime after profiling and pruning.</li>
       </ul>
+    </article>
+
+    <article id="post-onefile" class="post">
+      <div class="meta">Guide -  Web</div>
+      <h3>Shipping a one‑file blog on GitHub Pages</h3>
+      <ol style="margin:0 0 0 18px; padding:0 0 0 6px;">
+        <li>Create a repo and add index.html (this file) at the root.</li>
+        <li>Commit and push, or upload via the web UI.</li>
+        <li>Settings → Pages → Branch: main, Folder: /(root) → Save.</li>
+        <li>Open the URL shown in the Pages section — that’s the blog.</li>
+      </ol>
+      <p>Optional later: add a _config.yml and pick a Jekyll theme; the single‑file site already works fine without a build step.</p>
     </article>
   </main>
 
   <aside class="card">
     <h2 id="about">About</h2>
-    <p>Entry-level AI/ML engineer and full-stack learner. Interests: emotion recognition, data pipelines, and accessible web UIs.</p>
+    <p>B.Tech CSE (AI & ML) @ Techno Main Salt Lake, expected 2026. Interests: machine learning, data engineering, full‑stack web, and model deployment.</p>
+    <p>Skills: C/C++, Java, Python, JavaScript, HTML/CSS; SQL; TensorFlow/Keras, scikit‑learn, Pandas; REST APIs; CI/CD; Docker, Kubernetes; Git/GitHub; AWS (S3, Athena, EC2), GCP; Power BI.</p>
 
     <h2 id="projects" style="margin-top:18px;">Projects</h2>
     <ul class="list">
-      <li><strong>Airlines Seat Reservation System</strong> — HTML, CSS, Bootstrap, JS, PHP, MySQL.</li>
-      <li><strong>Emotion Recognition</strong> — eye-gaze + head-rotation features with labels.</li>
-      <li><strong>Login/Boarding-pass Simulation</strong> — web demo with auth and state.</li>
+      <li><strong>Traffic Congestion ML Model and Simulation</strong> — LSTM with 92% accuracy and ~30% faster runtime; feature engineering and class‑imbalance handling. <a href="#" aria-label="GitHub repository">GitHub Repo</a></li>
+      <li><strong>Pearl of the Indian Ocean Website</strong> — responsive tourism site; accessibility and performance tuned (Lighthouse 90+). Tech: Vue.js, JavaScript, Tailwind, jQuery, ARIA, HTML5. <a href="#" aria-label="Live site">Live Link</a></li>
+      <li><strong>Airlines Seat Reservation System</strong> — boarding simulation with roles, ticketing, KYC, QR boarding passes; real‑time check‑in for 100+ passengers; team of 6, delivered in 3 months. Tech: HTML, CSS, Bootstrap, JS, PHP, MySQL. <a href="#" aria-label="GitHub repository">GitHub Repo</a></li>
+    </ul>
+
+    <h2 style="margin-top:18px;">Experience</h2>
+    <ul class="list">
+      <li><strong>Data Engineering Intern — AICTE EduSkills (AWS Academy)</strong>, Jul–Sep 2024, Remote. Automated ETL on AWS (S3, Lambda, Glue, Athena); Step Functions for validation; improved processing time and reliability. </li>
+      <li><strong>AI‑ML Intern — AICTE EduSkills (Google for Developers)</strong>, Apr–Jun 2024, Remote. Trained classification models (TensorFlow, scikit‑learn); dashboards with BigQuery and Data Studio; SMOTE and scaling improved F1.</li>
+    </ul>
+
+    <h2 style="margin-top:18px;">Certifications</h2>
+    <ul class="list">
+      <li>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional — <a href="#" aria-label="Certificate link">Certificate</a></li>
+      <li>AWS Academy Graduate — Cloud Foundations — <a href="#" aria-label="Certificate link">Certificate</a></li>
+      <li>AWS Academy Graduate — Data Engineering — <a href="#" aria-label="Certificate link">Certificate</a></li>
+      <li>Deloitte Technology Job Simulation (Forage)</li>
     </ul>
 
     <h2 id="contact" style="margin-top:18px;">Contact</h2>
-    <p>Email: yourname@example.com</p>
-    <p>GitHub: github.com/yourusername</p>
-    <p>LinkedIn: linkedin.com/in/yourhandle</p>
+    <p class="contact">
+      <a href="tel:+916297317206">+91 6297317206</a> ·
+      <a href="mailto:work.soumen23@gmail.com">work.soumen23@gmail.com</a>
+    </p>
+    <p class="contact">
+      <a href="https://www.linkedin.com/in/REPLACE" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/REPLACE" target="_blank" rel="noopener">GitHub</a>
+    </p>
+    <p>Kolkata, West Bengal</p>
   </aside>
 </div>
 
 <footer>
-  <div>© <span id="y"></span> Your Name</div>
-  <div>Fast, single-file blog on GitHub Pages</div>
+  <div>© <span id="y"></span> Soumen Pal</div>
+  <div>Fast, single‑file blog on GitHub Pages</div>
 </footer>
 </div> <script> document.getElementById('y').textContent = new Date().getFullYear(); </script> </body> </html>
