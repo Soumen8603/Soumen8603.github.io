@@ -44,6 +44,8 @@ Step 1: Create Plugin and CPT
 
 File: wp-content/plugins/minimal-books/minimal-books.php
 
+```markdown
+```php
 <?php
 /**
  * Plugin Name: Minimal Books
@@ -71,11 +73,11 @@ function mb_register_book_cpt() {
     register_post_type( 'book', $args );
 }
 add_action( 'init', 'mb_register_book_cpt' );
-
+```
 Step 2: Enqueue Assets & Pass REST Settings
 
 Add this to minimal-books.php:
-
+```php
 /**
  * Enqueue front-end assets and pass REST settings + nonce.
  */
@@ -104,7 +106,8 @@ function mb_enqueue_assets() {
     ) );
 }
 add_action( 'wp_enqueue_scripts', 'mb_enqueue_assets' );
-
+```
+```css
 css/app.css
 #mb-add {
   padding: 8px 12px;
@@ -117,11 +120,11 @@ css/app.css
 #mb-add:hover {
   background: #135e96;
 }
-
+```
 Step 3: Secure REST Route
 
 Add to minimal-books.php:
-
+```php
 /**
  * Register REST route: POST /mb/v1/books
  */
@@ -163,11 +166,11 @@ function mb_create_book( WP_REST_Request $request ) {
 
     return new WP_REST_Response( array( 'id' => $post_id ), 201 );
 }
-
+```
 Step 4: Front-End JavaScript
 
 File: wp-content/plugins/minimal-books/js/app.js
-
+```js
 (function ($) {
   $(function () {
     const $btn = $('<button id="mb-add">Add Demo Book</button>');
@@ -197,3 +200,4 @@ File: wp-content/plugins/minimal-books/js/app.js
     });
   });
 })(jQuery);
+```
