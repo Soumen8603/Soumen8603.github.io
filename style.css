@@ -1,125 +1,109 @@
-/* ---------- Theme tokens ---------- */
-:root {
---bg: #0b0f19;
---card: #111729;
---text: #e6eaf2;
---muted: #9aa4b2;
---accent: #4f8cff;
---accent-2: #8a5cf6;
---link: #9ad1ff;
---code-bg: #0f1424;
---border: #22314d;
+/* ========== Design tokens ========== */
+:root{
+--bg:#0b0f19;
+--surface:#111729;
+--surface-2:#0f1424;
+--text:#e6eaf2;
+--muted:#9aa4b2;
+--accent:#4f8cff;
+--accent-2:#8a5cf6;
+--link:#9ad1ff;
+--border:#22314d;
+--shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
-/* ---------- Base ---------- */
+/* ========== Base ========== */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
 
-{ box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-a { color: var(--link); text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Fluid, accessible type with clamp() /
+h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0} / scales by viewport within limits /
+h2{font-size:clamp(18px,2vw,22px);margin:0 0 8px}
+h3{font-size:clamp(16px,1.7vw,20px);margin:0}
+body, p, li{font-size:clamp(15px,1.2vw,17px);line-height:1.7} / readable body size range */
 
-/* ---------- Layout: now full width ---------- /
-/ Make the main wrapper span the full viewport width /
-.wrap {
-width: 100%;
-max-width: none; / remove previous 880px cap /
-margin: 0;
-padding: 28px 20px 80px; / keep side padding for breathing room /
-} / Full-width container using width and removing max-width */
+/* ========== Layout (full width) ========== /
+.wrap{
+width:100%;
+max-width:none; / remove narrow cap /
+margin:0;
+padding:28px min(5vw,28px) 84px; / responsive side padding /
+} / Full-width container replacing max-width */
 
-/* Optional full‑bleed utility: apply to header/hero or any section to stretch edge‑to‑edge /
-.full-bleed {
-width: 100vw;
-margin-left: calc(50% - 50vw);
-margin-right: calc(50% - 50vw);
-} / Full‑bleed technique with 100vw and calc() */
+/* Full‑bleed utility for sections that should stretch edge‑to‑edge /
+.full-bleed{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)} / 100vw + calc() trick */
 
-/* Header /
-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 12px;
-padding: 18px 20px 8px;
-border-bottom: 1px solid var(--border);
-position: sticky;
-top: 0;
-backdrop-filter: blur(6px);
-background: color-mix(in oklab, var(--bg) 80%, transparent);
-z-index: 10;
-} / Sticky, full-width header with padding */
-
-.brand { display: flex; align-items: center; gap: 12px; }
-.avatar-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); background: #fff; } /* Circular image, covers frame */
-.title { font-size: 18px; font-weight: 700; }
-nav { display: flex; gap: 16px; font-size: 14px; }
-.pill { color: var(--muted); padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; }
-.pill:hover { border-color: var(--link); }
+/* Header */
+header{
+position:sticky;top:0;z-index:10;
+display:flex;align-items:center;justify-content:space-between;gap:14px;
+padding:16px min(5vw,28px) 10px;
+backdrop-filter:blur(6px);
+background:color-mix(in oklab,var(--bg) 78%, transparent);
+border-bottom:1px solid var(--border);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.avatar-img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);background:#fff;box-shadow:var(--shadow)}
+.title{font-weight:700}
+nav{display:flex;gap:12px;font-size:14px}
+.pill{color:var(--muted);padding:6px 12px;border:1px solid var(--border);border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08))}
+.pill:hover{border-color:var(--link);color:#d9efff}
 
 /* Hero */
-.hero { display: grid; gap: 14px; padding: 24px 0 8px; }
-.hero h1 { font-size: 28px; margin: 0; }
-.hero p { color: var(--muted); margin: 0; line-height: 1.65; }
-.cta-row { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+.hero{display:grid;gap:14px;padding:28px 0 10px}
+.hero p{color:var(--muted)}
 
-/* Content grid /
-/ Wider columns on desktop; remains single column on mobile /
-.grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 16px; }
-@media (min-width: 760px) {
-.grid { grid-template-columns: 2fr 1fr; } / wider main column than aside */
+/* Content grid: wider and more balanced /
+.grid{display:grid;gap:18px;margin-top:18px;grid-template-columns:1fr}
+@media (min-width:760px){
+.grid{grid-template-columns:3fr 2fr} / widen About column /
+}
+@media (min-width:1200px){
+.grid{grid-template-columns:5fr 4fr} / even roomier on large screens */
 }
 
-/* Cards and posts */
-.card {
-background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), var(--card));
-border: 1px solid var(--border);
-border-radius: 14px;
-padding: 16px;
+/* Cards */
+.card{
+background:linear-gradient(180deg,color-mix(in oklab,var(--surface) 92%, transparent),var(--surface));
+border:1px solid var(--border);
+border-radius:14px;
+padding:16px;
+box-shadow:var(--shadow);
 }
-.card h2 { margin: 0 0 8px; font-size: 18px; }
-.meta { color: var(--muted); font-size: 13px; }
+.meta{color:var(--muted);font-size:13px}
 
-.post {
-display: grid;
-gap: 8px;
-padding: 14px;
-border: 1px solid var(--border);
-border-radius: 12px;
-background: var(--code-bg);
-}
-.post h3 { margin: 0; font-size: 18px; }
-.post p { margin: 0; color: #cfd6e4; line-height: 1.65; }
+/* Posts */
+.post{display:grid;gap:10px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)}
+.post p{color:#cfd6e4}
+.tag{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:2px 8px;border-radius:999px}
+.post-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px}
 
-.tag { font-size: 12px; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; border-radius: 999px; }
-.post-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 10px; }
+/* Sidebar (About) refinements /
+.grid>aside.card{min-width:420px} / prevents over-condensing at mid widths */
+@media (max-width:999px){ .grid>aside.card{min-width:unset} }
 
-.btn { display: inline-block; padding: 8px 12px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; font-weight: 600; }
-.btn.ghost { background: transparent; color: var(--link); border: 1px solid var(--border); }
-.btn.sm { padding: 6px 10px; font-size: 14px; }
-.btn:hover { opacity: 0.95; text-decoration: none; }
+/* Buttons */
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:600;box-shadow:0 6px 16px rgba(79,140,255,.25)}
+.btn.ghost{background:transparent;color:var(--link);border:1px solid var(--border);box-shadow:none}
+.btn.sm{padding:7px 10px;font-size:14px}
+.btn:hover{filter:brightness(1.05)}
 
-.list { display: grid; gap: 12px; }
-.divider { margin: 16px 0; border: 0; border-top: 1px solid var(--border); }
+/* Lists and dividers */
+.list{display:grid;gap:12px}
+.divider{margin:16px 0;border:0;border-top:1px solid var(--border)}
+.flat{list-style:disc;padding-left:20px}
+.flat-ol{list-style:decimal;padding-left:20px}
 
-.flat { list-style: disc; padding-left: 20px; }
-.flat-ol { list-style: decimal; padding-left: 20px; }
-
-/* Code */
-pre, code { background: var(--code-bg); color: #e9ecf7; border-radius: 8px; }
-pre { padding: 14px; overflow: auto; border: 1px solid var(--border); }
-code { padding: 2px 6px; border: 1px solid var(--border); }
+/* Code styling */
+pre,code{background:var(--surface-2);color:#e9ecf7;border-radius:8px}
+pre{padding:14px;overflow:auto;border:1px solid var(--border)}
+code{padding:2px 6px;border:1px solid var(--border)}
 
 /* Footer */
-footer {
-margin-top: 32px;
-padding-top: 16px;
-border-top: 1px solid var(--border);
-color: var(--muted);
-font-size: 14px;
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 10px;
+footer{
+margin-top:34px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);
+font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px
 }
-.contact a { margin-right: 10px; }
-
+.contact a{margin-right:10px}
