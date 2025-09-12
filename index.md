@@ -1,29 +1,49 @@
----
-title: Minimal WordPress Plugin
-layout: null
----
+Minimal WordPress Plugin: CPT + Secure REST + Proper Enqueue
 
+This guide walks through creating a minimal WordPress plugin that:
 
+Registers a Custom Post Type (CPT) for “Books”.
 
-Building a Minimal WordPress Plugin: CPT + Secure REST + Proper Enqueue
-This post shows how to create a WordPress plugin that registers a “Book” custom post type, exposes a secure REST API endpoint with nonce verification, and properly enqueues scripts/styles for a small UI action, tailored for rtCamp’s ASE role.
+Exposes a secure REST API endpoint with nonce verification.
+
+Properly enqueues assets (scripts & styles) with localized settings.
+
+This mini-project demonstrates best practices and can serve as a quick review-ready slice for rtCamp’s ASE role.
 
 Problem
-Beginners often add scripts directly in templates, skip nonces/capabilities in REST endpoints, or mix unstructured code, which causes maintenance and security issues. This mini‑project builds a clean slice using WordPress best practices that can be run and reviewed quickly.
+
+Beginners often make mistakes such as:
+
+Adding scripts directly in templates.
+
+Skipping nonces and capability checks in REST endpoints.
+
+Mixing unstructured code inside functions.php.
+
+These issues lead to maintenance overhead and security vulnerabilities.
+
+This tutorial fixes that by showing how to build a clean, secure, and minimal plugin.
 
 Environment
-WordPress 6.x, PHP 8.x, MySQL 8.x
 
-Local dev using Local/WAMP/XAMPP/wp‑env
+WordPress: 6.x
 
-Logged‑in user with capability to publish posts
+PHP: 8.x
 
-Plugin folder: wp-content/plugins/minimal-books
+MySQL: 8.x
 
-Step 1: Create the plugin and register the CPT
-Create wp-content/plugins/minimal-books/minimal-books.php:
+Local Dev: Local / WAMP / XAMPP / wp-env
 
-```php
+Requirements: Logged-in user with publish_posts capability
+
+Plugin folder:
+
+wp-content/plugins/minimal-books
+
+Step 1: Create Plugin and CPT
+
+File: wp-content/plugins/minimal-books/minimal-books.php
+
 <?php
 /**
  * Plugin Name: Minimal Books
@@ -31,7 +51,6 @@ Create wp-content/plugins/minimal-books/minimal-books.php:
  * Version: 0.1.0
  * Author: Your Name
  */
-
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
@@ -52,16 +71,11 @@ function mb_register_book_cpt() {
     register_post_type( 'book', $args );
 }
 add_action( 'init', 'mb_register_book_cpt' );
-Step 2: Enqueue scripts/styles and pass REST settings
-Create:
 
-wp-content/plugins/minimal-books/js/app.js
+Step 2: Enqueue Assets & Pass REST Settings
 
-wp-content/plugins/minimal-books/css/app.css
+Add this to minimal-books.php:
 
-Add to minimal-books.php:
-
-```php
 /**
  * Enqueue front-end assets and pass REST settings + nonce.
  */
@@ -90,9 +104,8 @@ function mb_enqueue_assets() {
     ) );
 }
 add_action( 'wp_enqueue_scripts', 'mb_enqueue_assets' );
-css/app.css:
 
-css
+css/app.css
 #mb-add {
   padding: 8px 12px;
   background: #2271b1;
@@ -101,11 +114,14 @@ css
   border-radius: 4px;
   cursor: pointer;
 }
-#mb-add:hover { background: #135e96; }
-Step 3: Secure REST route with capability and nonce checks
+#mb-add:hover {
+  background: #135e96;
+}
+
+Step 3: Secure REST Route
+
 Add to minimal-books.php:
 
-```php
 /**
  * Register REST route: POST /mb/v1/books
  */
@@ -147,10 +163,11 @@ function mb_create_book( WP_REST_Request $request ) {
 
     return new WP_REST_Response( array( 'id' => $post_id ), 201 );
 }
-Step 4: Front‑end JS to create a Book
-Create wp-content/plugins/minimal-books/js/app.js:
 
-``````js
+Step 4: Front-End JavaScript
+
+File: wp-content/plugins/minimal-books/js/app.js
+
 (function ($) {
   $(function () {
     const $btn = $('<button id="mb-add">Add Demo Book</button>');
