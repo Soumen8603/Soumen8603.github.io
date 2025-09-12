@@ -1,3 +1,10 @@
+---
+title: Minimal WordPress Plugin
+layout: null
+---
+
+
+
 Building a Minimal WordPress Plugin: CPT + Secure REST + Proper Enqueue
 This post shows how to create a WordPress plugin that registers a “Book” custom post type, exposes a secure REST API endpoint with nonce verification, and properly enqueues scripts/styles for a small UI action, tailored for rtCamp’s ASE role.
 
@@ -16,7 +23,7 @@ Plugin folder: wp-content/plugins/minimal-books
 Step 1: Create the plugin and register the CPT
 Create wp-content/plugins/minimal-books/minimal-books.php:
 
-php
+```php
 <?php
 /**
  * Plugin Name: Minimal Books
@@ -54,7 +61,7 @@ wp-content/plugins/minimal-books/css/app.css
 
 Add to minimal-books.php:
 
-php
+```php
 /**
  * Enqueue front-end assets and pass REST settings + nonce.
  */
@@ -98,7 +105,7 @@ css
 Step 3: Secure REST route with capability and nonce checks
 Add to minimal-books.php:
 
-php
+```php
 /**
  * Register REST route: POST /mb/v1/books
  */
@@ -141,9 +148,9 @@ function mb_create_book( WP_REST_Request $request ) {
     return new WP_REST_Response( array( 'id' => $post_id ), 201 );
 }
 Step 4: Front‑end JS to create a Book
-js/app.js:
+Create wp-content/plugins/minimal-books/js/app.js:
 
-js
+``````js
 (function ($) {
   $(function () {
     const $btn = $('<button id="mb-add">Add Demo Book</button>');
