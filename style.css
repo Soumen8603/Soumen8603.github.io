@@ -12,19 +12,20 @@
   --shadow:0 10px 25px rgba(0,0,0,.25);
 
   /* layout */
-  --container-max:1100px;                 /* readable width */
-  --gutter:clamp(16px,3vw,28px);          /* side gutters */
+  --container-max:1100px;
+  /* smaller gutters than before */
+  --gutter: clamp(8px, 1.6vw, 16px);
 }
 
 /* ========== Base ========== */
 *{ box-sizing:border-box }
 html,body{ margin:0; background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
 
-/* Global side space so nothing hugs the edges */
-body{ padding-inline:var(--gutter) } /* consistent left & right space on every page */  /* [8][4] */
+/* Global side space (reduced) */
+body{ padding-inline:var(--gutter) }
 
-/* Prevent accidental overflow from 100vw patterns */
-html,body{ max-width:100%; overflow-x:hidden } /* [21] */
+/* Prevent accidental overflow */
+html,body{ max-width:100%; overflow-x:hidden }
 
 /* Type */
 h1{ font-size:clamp(28px,4vw,44px); line-height:1.15; margin:0 }
@@ -35,11 +36,10 @@ a{ color:var(--link); text-decoration:none }
 a:hover{ text-decoration:underline }
 
 /* ========== Shared container ========== */
-/* This centers all site sections and aligns them on the same x-start */
 .container{
   max-width:var(--container-max);
-  margin-inline:auto;                 /* center */
-  padding-inline:var(--gutter);       /* inner gutters match page gutters */
+  margin-inline:auto;
+  padding-inline:var(--gutter);  /* matches smaller gutters */
 }
 
 /* ========== Header ========== */
@@ -59,7 +59,7 @@ nav{ display:flex; gap:12px; font-size:14px }
 .pill:hover{ border-color:var(--link); color:#d9efff }
 
 /* ========== Sections ========== */
-.wrap{ padding-block:28px 84px } /* top/bottom only; left/right handled by body/container */
+.wrap{ padding-block:28px 84px }
 
 .hero{ display:grid; gap:14px; padding-block:28px 10px }
 .hero p{ color:var(--muted) }
@@ -108,6 +108,3 @@ code{ padding:2px 6px; border:1px solid var(--border) }
 /* Footer */
 footer{ margin-top:34px; padding-top:16px; border-top:1px solid var(--border); color:var(--muted); font-size:14px }
 .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px }
-
-/* Utility: neutralize <br> gaps used in markup so spacing comes from CSS, not <br> */
-br{ display:none } /* optional: remove if <br> must remain visible */  /* [9][11] */
