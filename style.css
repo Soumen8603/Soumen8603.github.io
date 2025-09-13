@@ -10,20 +10,24 @@
   --link:#9ad1ff;
   --border:#22314d;
   --shadow:0 10px 25px rgba(0,0,0,.25);
-
   /* layout tokens */
   --container-max: 1100px;              /* page reading width */
   --gutter: clamp(12px, 2.5vw, 24px);   /* responsive side padding */
 }
 
 /* ========== Base ========== */
-*{ box-sizing:border-box } /* [19] */
+*{ box-sizing:border-box }
 html,body{
   margin:0;
   background:var(--bg);
   color:var(--text);
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
+
+/* add horizontal gutters so text never touches page edges */
+body{
+  padding-inline: var(--gutter); /* left and right only */
+} /* uses clamp() to scale spacing responsively */
 
 /* Links */
 a{ color:var(--link); text-decoration:none }
@@ -39,10 +43,10 @@ body, p, li{ font-size:clamp(15px,1.2vw,17px); line-height:1.7 }
 /* Shared container: centers content and creates equal gutters on both sides */
 .container{
   max-width:var(--container-max);
-  margin-left:auto;                    /* center the container */        /* [17] */
-  margin-right:auto;                   /* center the container */        /* [17] */
-  padding-left:var(--gutter);          /* consistent left gutter */      /* [19] */
-  padding-right:var(--gutter);         /* consistent right gutter */     /* [19] */
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
 }
 
 /* Site wrapper now just becomes a container */
@@ -62,6 +66,7 @@ header{
   background:color-mix(in oklab,var(--bg) 78%, transparent);
   border-bottom:1px solid var(--border);
 }
+
 /* inner header content uses the same container so avatar and text line up */
 header .header-inner{
   display:flex; align-items:center; justify-content:space-between; gap:14px;
