@@ -1,136 +1,155 @@
-<!DOCTYPE html><html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Soumen Pal — Personal Blog</title> <meta name="description" content="Personal blog of Soumen Pal — software engineering, AI/ML, and full‑stack projects." /> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> <link rel="stylesheet" href="style.css" /> <script src="script.js" defer></script> </head> <body> <div class="wrap"> <header> <div class="brand"> <img class="avatar-img" src="img.jpg" alt="Soumen Pal portrait" /> <div class="title">Soumen Pal — Blog</div> </div> <nav> <a class="pill" href="#posts">Posts</a> <a class="pill" href="#about">About</a> <a class="pill" href="#projects">Projects</a> <a class="pill" href="#contact">Contact</a> </nav> </header>
-
-<section class="hero">
-  <h1>Hi, this is Soumen Pal — sharing notes on software engineering, AI/ML, and full‑stack development.</h1>
-  <p> Motivated fresher with foundational skills in software engineering, AI/ML, and full stack development, actively seeking
- full-time opportunities to apply and grow technical expertise in these domains. </p>
-  <div class="cta-row">
-    <a class="btn" href="https://www.linkedin.com/in/soumen-pal-09ba96264/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn ghost" href="https://github.com/Soumen8603" target="_blank" rel="noopener">GitHub</a>
-  </div>
-</section>
-
-<div class="grid">
-  <main class="card">
-    <h2 id="posts">Latest posts</h2>
-    <div class="list">
-
-      <article class="post">
-        <div class="meta">Sep 2025 -  4 min -  Data Eng</div>
-        <h3>Automating ETL on AWS: S3 → Glue → Athena</h3>
-        <p>Wiring S3 triggers to Lambda, orchestrating Glue with Step Functions, and Parquet+partitioning for cheaper, faster queries.</p>
-        <div class="post-footer">
-          <span class="tag">aws</span>
-          <a class="btn sm" href="#post-aws-etl">Read</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Soumen Pal — Personal Blog</title>
+    <meta name="description" content="Personal blog of Soumen Pal — software engineering, AI/ML, and full‑stack projects." />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="container header-inner">
+          <div class="brand">
+            <img class="avatar-img" src="img.jpg" alt="Soumen Pal portrait" />
+            <div class="title">Soumen Pal — Blog</div>
+          </div>
+          <nav>
+            <a class="pill" href="#posts">Posts</a>
+            <a class="pill" href="#about">About</a>
+            <a class="pill" href="#projects">Projects</a>
+            <a class="pill" href="#contact">Contact</a>
+          </nav>
         </div>
-      </article>
+      </header>
 
-      <article class="post">
-        <div class="meta">Sep 2025 -  3 min -  ML</div>
-        <h3>LSTM traffic prediction: accuracy vs runtime</h3>
-        <p>Feature engineering for sequence data, class imbalance handling, and profiling to achieve 92% accuracy with ~30% faster runtime.</p>
-        <div class="post-footer">
-          <span class="tag">tensorflow</span>
-          <a class="btn sm" href="#post-traffic-lstm">Read</a>
+      <section class="hero container">
+        <h1>Hi, this is Soumen Pal — sharing notes on software engineering, AI/ML, and full‑stack development.</h1>
+        <p>Motivated fresher with foundational skills in software engineering, AI/ML, and full stack development, actively seeking full-time opportunities to apply and grow technical expertise in these domains.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://www.linkedin.com/in/soumen-pal-09ba96264/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/Soumen8603" target="_blank" rel="noopener">GitHub</a>
         </div>
-      </article>
+      </section>
 
-      <article class="post">
-        <div class="meta">Aug 2025 -  3 min -  Web</div>
-        <h3>Shipping a lightweight blog on GitHub Pages</h3>
-        <p>Plain HTML, external CSS, and a tiny JS file — no build tools needed and easy to maintain.</p>
-        <div class="post-footer">
-          <span class="tag">github-pages</span>
-          <a class="btn sm" href="#post-onefile">Read</a>
+      <div class="grid container">
+        <main class="card">
+          <h2 id="posts">Latest posts</h2>
+          <div class="list">
+            <article class="post">
+              <div class="meta">Sep 2025 · 4 min · Data Eng</div>
+              <h3>Automating ETL on AWS: S3 → Glue → Athena</h3>
+              <p>Wiring S3 triggers to Lambda, orchestrating Glue with Step Functions, and Parquet+partitioning for cheaper, faster queries.</p>
+              <div class="post-footer">
+                <span class="tag">aws</span>
+                <a class="btn sm" href="#post-aws-etl">Read</a>
+              </div>
+            </article>
+
+            <article class="post">
+              <div class="meta">Sep 2025 · 3 min · ML</div>
+              <h3>LSTM traffic prediction: accuracy vs runtime</h3>
+              <p>Feature engineering for sequence data, class imbalance handling, and profiling to achieve 92% accuracy with ~30% faster runtime.</p>
+              <div class="post-footer">
+                <span class="tag">tensorflow</span>
+                <a class="btn sm" href="#post-traffic-lstm">Read</a>
+              </div>
+            </article>
+
+            <article class="post">
+              <div class="meta">Aug 2025 · 3 min · Web</div>
+              <h3>Shipping a lightweight blog on GitHub Pages</h3>
+              <p>Plain HTML, external CSS, and a tiny JS file — no build tools needed and easy to maintain.</p>
+              <div class="post-footer">
+                <span class="tag">github-pages</span>
+                <a class="btn sm" href="#post-onefile">Read</a>
+              </div>
+            </article>
+          </div>
+
+          <hr class="divider" />
+
+          <article id="post-aws-etl" class="post">
+            <div class="meta">Deep‑dive · AWS</div>
+            <h3>Automating ETL on AWS: S3 → Glue → Athena</h3>
+            <p>Pipeline: S3 upload → Lambda validation → Step Functions orchestration → Glue ETL → Athena over Parquet with partitions. Add compression and data contracts early.</p>
+            <pre><code># Example: Athena table over partitioned Parquet
+CREATE EXTERNAL TABLE ...</code></pre>
+            <p>Reliability tips: schema validation in Lambda, partition management, and CloudWatch dashboards for latency and success metrics.</p>
+          </article>
+
+          <article id="post-traffic-lstm" class="post">
+            <div class="meta">Project · ML</div>
+            <h3>LSTM traffic prediction: accuracy vs runtime</h3>
+            <ul class="flat">
+              <li>Stacked LSTM with early stopping and LR scheduling.</li>
+              <li>Temporal lags, normalization, and windowed sequences.</li>
+              <li>~92% accuracy and ~30% faster after profiling and pruning.</li>
+            </ul>
+          </article>
+
+          <article id="post-onefile" class="post">
+            <div class="meta">Guide · Web</div>
+            <h3>Deploy steps</h3>
+            <ol class="flat-ol">
+              <li>Create a repo and add index.html, styles.css, script.js, and img/profile.jpg at the publishing root.</li>
+              <li>Commit and push, or upload via the web UI.</li>
+              <li>Settings → Pages → Branch: main, Folder: /(root) → Save.</li>
+              <li>Open the URL shown under Pages.</li>
+            </ol>
+          </article>
+        </main>
+
+        <aside class="card">
+          <h2 id="about">About</h2>
+          <p>B.Tech CSE (AI & ML), Techno Main Salt Lake, expected 2026. Interests: Machine Learning, Software Engineering, Data Engineering, Full‑Stack Web, Deployment.</p>
+          <p>Skills: C/C++, C, Java, Python, JavaScript, HTML, CSS; SQL; TensorFlow/Keras, scikit‑learn, Pandas; REST APIs; CI/CD; Docker, Kubernetes; Git/GitHub; AWS (S3, Athena, EC2), GCP; Power BI.</p>
+
+          <h2 id="projects">Projects</h2>
+          <ul class="list">
+            <li><strong>Traffic Congestion ML Model and Simulation</strong> — LSTM with 92% accuracy and ~30% faster runtime; feature engineering and class imbalance handling. <a href="https://github.com/AllMightLegend/SIH-Traffic_Congestion_Model" aria-label="GitHub repository">GitHub Repo</a></li>
+            <li><strong>Pearl of the Indian Ocean Website</strong> — responsive tourism site; accessibility and Lighthouse 90+. Tech: Vue.js, JS, Tailwind, jQuery, ARIA, HTML5. <a href="https://soumen8603.github.io/Web-Development-project/" aria-label="Live site">Live Link</a></li>
+            <li><strong>Airlines Seat Reservation System</strong> — boarding simulation with roles, ticketing, KYC, QR passes; 100+ passengers per flight; 6‑member team in 3 months. Tech: HTML, CSS, Bootstrap, JS, PHP, MySQL. <a href="https://github.com/Soumen8603/Airlines-seat-reservation" aria-label="GitHub repository">GitHub Repo</a></li>
+          </ul>
+
+          <h2>Experience</h2>
+          <ul class="list">
+            <li><strong>Data Engineering Intern — AICTE EduSkills (AWS Academy)</strong>, Jul–Sep 2024, Remote. Automated ETL (S3, Lambda, Glue, Athena); Step Functions; Jira/Confluence for agile sprints.</li>
+            <li><strong>AI‑ML Intern — AICTE EduSkills (Google for Developers)</strong>, Apr–Jun 2024, Remote. Classification models; BigQuery + Data Studio dashboards; SMOTE and scaling for F1 improvement.</li>
+          </ul>
+
+          <h2>Certifications</h2>
+          <ul class="list">
+            <li>OCI 2025 Certified Generative AI Professional — <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=2D40FAEE851C2357137E12D280345AD8D6D79AA154B284B8604C452D603BF759" aria-label="Certificate link">Certificate</a></li>
+            <li>AWS Academy Graduate — Cloud Foundations — <a href="https://www.credly.com/badges/91cf9f83-1603-408b-ba4b-e9d31cfa58dd/public_ur" aria-label="Certificate link">Certificate</a></li>
+            <li>AWS Academy Graduate — Data Engineering — <a href="https://www.credly.com/badges/d603ee56-1d60-46a8-bfbb-7257d1c225c7/public_url" aria-label="Certificate link">Certificate</a></li>
+            <li>Deloitte Technology Job Simulation (Forage)</li>
+          </ul>
+
+          <h2 id="contact">Contact</h2>
+          <p class="contact">
+            <a href="tel:+916297317206">+91 6297317206</a> ·
+            <a href="mailto:work.soumen23@gmail.com">work.soumen23@gmail.com</a>
+          </p>
+          <p class="contact">
+            <a href="https://www.linkedin.com/in/soumen-pal-09ba96264/" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://github.com/Soumen8603" target="_blank" rel="noopener">GitHub</a>
+          </p>
+          <p>Kolkata, West Bengal</p>
+        </aside>
+      </div>
+
+      <footer>
+        <div class="container footer-inner">
+          <div>© <span id="y"></span> Soumen Pal</div>
+          <div>Fast, three‑file blog on GitHub Pages</div>
         </div>
-      </article>
-
+      </footer>
     </div>
-
-    <hr class="divider" />
-
-    <article id="post-aws-etl" class="post">
-      <div class="meta">Deep‑dive -  AWS</div>
-      <h3>Automating ETL on AWS: S3 → Glue → Athena</h3>
-      <p>Pipeline: S3 upload → Lambda validation → Step Functions orchestration → Glue ETL → Athena over Parquet with partitions. Add compression and data contracts early.</p>
-      <pre><code># Example: Athena table over partitioned Parquet
-CREATE EXTERNAL TABLE IF NOT EXISTS analytics.events (
-event_time timestam
-, user_id str
-ng, action s
-ring, payloa
-
-tring ) PARTITIONED BY (dt
-string) STORED AS
-PARQUET LOCATION 's3://bucket/analytics/
-</code></pre>
-<p>Reliability tips: schema validation in Lambda, partition management, and CloudWatch dashboards for latency and success metrics.</p>
-</article>
-
-
-    <article id="post-traffic-lstm" class="post">
-      <div class="meta">Project -  ML</div>
-      <h3>LSTM traffic prediction: accuracy vs runtime</h3>
-      <ul class="flat">
-        <li>Stacked LSTM with early stopping and LR scheduling.</li>
-        <li>Temporal lags, normalization, and windowed sequences.</li>
-        <li>~92% accuracy and ~30% faster after profiling and pruning.</li>
-      </ul>
-    </article>
-
-    <article id="post-onefile" class="post">
-      <div class="meta">Guide -  Web</div>
-      <h3>Deploy steps</h3>
-      <ol class="flat-ol">
-        <li>Create a repo and add index.html, styles.css, script.js, and img/profile.jpg at the publishing root.</li>
-        <li>Commit and push, or upload via the web UI.</li>
-        <li>Settings → Pages → Branch: main, Folder: /(root) → Save.</li>
-        <li>Open the URL shown under Pages.</li>
-      </ol>
-    </article>
-  </main>
-
-  <aside class="card">
-    <h2 id="about">About</h2>
-    <p>B.Tech CSE (AI & ML), Techno Main Salt Lake, expected 2026. Interests: Machine Learning, Software Engineering, Data Engineering, Full‑Stack Web, Deployment.</p>
-    <p>Skills: C/C++, C, Java, Python, JavaScript, HTML, CSS; SQL; TensorFlow/Keras, scikit‑learn, Pandas; REST APIs; CI/CD; Docker, Kubernetes; Git/GitHub; AWS (S3, Athena, EC2), GCP; Power BI.</p>
-
-    <h2 id="projects">Projects</h2>
-    <ul class="list">
-      <li><strong>Traffic Congestion ML Model and Simulation</strong> — LSTM with 92% accuracy and ~30% faster runtime; feature engineering and class imbalance handling. <a href="https://github.com/AllMightLegend/SIH-Traffic_Congestion_Model" aria-label="GitHub repository">GitHub Repo</a></li>
-      <li><strong>Pearl of the Indian Ocean Website</strong> — responsive tourism site; accessibility and Lighthouse 90+. Tech: Vue.js, JS, Tailwind, jQuery, ARIA, HTML5. <a href="https://soumen8603.github.io/Web-Development-project/" aria-label="Live site">Live Link</a></li>
-      <li><strong>Airlines Seat Reservation System</strong> — boarding simulation with roles, ticketing, KYC, QR passes; 100+ passengers per flight; 6‑member team in 3 months. Tech: HTML, CSS, Bootstrap, JS, PHP, MySQL. <a href="https://github.com/Soumen8603/Airlines-seat-reservation" aria-label="GitHub repository">GitHub Repo</a></li>
-    </ul>
-
-    <h2>Experience</h2>
-    <ul class="list">
-      <li><strong>Data Engineering Intern — AICTE EduSkills (AWS Academy)</strong>, Jul–Sep 2024, Remote. Automated ETL (S3, Lambda, Glue, Athena); Step Functions; Jira/Confluence for agile sprints.</li>
-      <li><strong>AI‑ML Intern — AICTE EduSkills (Google for Developers)</strong>, Apr–Jun 2024, Remote. Classification models; BigQuery + Data Studio dashboards; SMOTE and scaling for F1 improvement.</li>
-    </ul>
-
-    <h2>Certifications</h2>
-    <ul class="list">
-      <li>OCI 2025 Certified Generative AI Professional — <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=2D40FAEE851C2357137E12D280345AD8D6D79AA154B284B8604C452D603BF759" aria-label="Certificate link">Certificate</a></li>
-      <li>AWS Academy Graduate — Cloud Foundations — <a href="https://www.credly.com/badges/91cf9f83-1603-408b-ba4b-e9d31cfa58dd/public_ur" aria-label="Certificate link">Certificate</a></li>
-      <li>AWS Academy Graduate — Data Engineering — <a href="https://www.credly.com/badges/d603ee56-1d60-46a8-bfbb-7257d1c225c7/public_url" aria-label="Certificate link">Certificate</a></li>
-      <li>Deloitte Technology Job Simulation (Forage)</li>
-    </ul>
-
-    <h2 id="contact">Contact</h2>
-    <p class="contact">
-      <a href="tel:+916297317206">+91 6297317206</a> ·
-      <a href="mailto:work.soumen23@gmail.com">work.soumen23@gmail.com</a>
-    </p>
-    <p class="contact">
-      <a href="https://www.linkedin.com/in/soumen-pal-09ba96264/" target="_blank" rel="noopener">LinkedIn</a> ·
-      <a href="https://github.com/Soumen8603" target="_blank" rel="noopener">GitHub</a>
-    </p>
-    <p>Kolkata, West Bengal</p>
-  </aside>
-</div>
-
-<footer>
-  <div>© <span id="y"></span> Soumen Pal</div>
-  <div>Fast, three‑file blog on GitHub Pages</div>
-</footer>
-</div> </body> </html>
+  </body>
+</html>
