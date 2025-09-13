@@ -1,109 +1,161 @@
 /* ========== Design tokens ========== */
 :root{
---bg:#0b0f19;
---surface:#111729;
---surface-2:#0f1424;
---text:#e6eaf2;
---muted:#9aa4b2;
---accent:#4f8cff;
---accent-2:#8a5cf6;
---link:#9ad1ff;
---border:#22314d;
---shadow:0 10px 25px rgba(0,0,0,.25);
+  --bg:#0b0f19;
+  --surface:#111729;
+  --surface-2:#0f1424;
+  --text:#e6eaf2;
+  --muted:#9aa4b2;
+  --accent:#4f8cff;
+  --accent-2:#8a5cf6;
+  --link:#9ad1ff;
+  --border:#22314d;
+  --shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
 /* ========== Base ========== */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-a{color:var(--link);text-decoration:none}
-a:hover{text-decoration:underline}
+*{ box-sizing:border-box }
 
-/* Fluid, accessible type with clamp() /
-h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0} / scales by viewport within limits /
-h2{font-size:clamp(18px,2vw,22px);margin:0 0 8px}
-h3{font-size:clamp(16px,1.7vw,20px);margin:0}
-body, p, li{font-size:clamp(15px,1.2vw,17px);line-height:1.7} / readable body size range */
+html, body{
+  margin:0; /* reset browser defaults */
+  /* responsive page gutters on all sides */
+  padding: clamp(12px, 2.5vw, 24px);
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
 
-/* ========== Layout (full width) ========== /
+a{ color:var(--link); text-decoration:none }
+a:hover{ text-decoration:underline }
+
+/* Fluid, accessible type with clamp() */
+h1{ font-size:clamp(28px,4vw,44px); line-height:1.15; margin:0 }
+h2{ font-size:clamp(18px,2vw,22px); margin:0 0 8px }
+h3{ font-size:clamp(16px,1.7vw,20px); margin:0 }
+body, p, li{ font-size:clamp(15px,1.2vw,17px); line-height:1.7 }
+
+/* ========== Layout (full width) ========== */
 .wrap{
-width:100%;
-max-width:none; / remove narrow cap /
-margin:10px;
-padding:28px min(5vw,28px) 84px; / responsive side padding /
-} / Full-width container replacing max-width */
+  width:100%;
+  max-width:none;                 /* no narrow cap */
+  margin:0;                       /* let body padding be the outer spacing */
+  padding:28px min(5vw,28px) 84px;/* internal spacing for the page content */
+}
 
-/* Full‑bleed utility for sections that should stretch edge‑to‑edge /
-.full-bleed{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)} / 100vw + calc() trick */
+/* Full‑bleed utility: use only where edge‑to‑edge is desired */
+.full-bleed{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
 
 /* Header */
 header{
-position:sticky;top:0;z-index:10;
-display:flex;align-items:center;justify-content:space-between;gap:14px;
-padding:16px min(5vw,28px) 10px;
-backdrop-filter:blur(6px);
-background:color-mix(in oklab,var(--bg) 78%, transparent);
-border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  /* align with page gutters while sticky */
+  padding:16px min(5vw,28px) 10px;
+  backdrop-filter:blur(6px);
+  background:color-mix(in oklab,var(--bg) 78%, transparent);
+  border-bottom:1px solid var(--border);
 }
-.brand{display:flex;align-items:center;gap:12px}
-.avatar-img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);background:#fff;box-shadow:var(--shadow)}
-.title{font-weight:700}
-nav{display:flex;gap:12px;font-size:14px}
-.pill{color:var(--muted);padding:6px 12px;border:1px solid var(--border);border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08))}
-.pill:hover{border-color:var(--link);color:#d9efff}
+
+.brand{ display:flex; align-items:center; gap:12px }
+.avatar-img{
+  width:52px; height:52px; border-radius:50%;
+  object-fit:cover; border:2px solid var(--border);
+  background:#fff; box-shadow:var(--shadow);
+}
+.title{ font-weight:700 }
+nav{ display:flex; gap:12px; font-size:14px }
+.pill{
+  color:var(--muted);
+  padding:6px 12px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08));
+}
+.pill:hover{ border-color:var(--link); color:#d9efff }
 
 /* Hero */
-.hero{display:grid;gap:14px;padding:28px 0 10px}
-.hero p{color:var(--muted)}
+.hero{ display:grid; gap:14px; padding:28px 0 10px }
+.hero p{ color:var(--muted) }
 
-/* Content grid: wider and more balanced /
-.grid{display:grid;gap:18px;margin-top:18px;grid-template-columns:1fr}
+/* Content grid */
+.grid{ display:grid; gap:18px; margin-top:18px; grid-template-columns:1fr }
 @media (min-width:760px){
-.grid{grid-template-columns:3fr 2fr} / widen About column /
+  .grid{ grid-template-columns:3fr 2fr }
 }
 @media (min-width:1200px){
-.grid{grid-template-columns:5fr 4fr} / even roomier on large screens */
+  .grid{ grid-template-columns:5fr 4fr }
 }
 
 /* Cards */
 .card{
-background:linear-gradient(180deg,color-mix(in oklab,var(--surface) 92%, transparent),var(--surface));
-border:1px solid var(--border);
-border-radius:14px;
-padding:16px;
-box-shadow:var(--shadow);
+  background:linear-gradient(
+    180deg,
+    color-mix(in oklab,var(--surface) 92%, transparent),
+    var(--surface)
+  );
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  box-shadow:var(--shadow);
 }
-.meta{color:var(--muted);font-size:13px}
+.meta{ color:var(--muted); font-size:13px }
 
 /* Posts */
-.post{display:grid;gap:10px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)}
-.post p{color:#cfd6e4}
-.tag{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:2px 8px;border-radius:999px}
-.post-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px}
+.post{
+  display:grid; gap:10px; padding:14px;
+  border:1px solid var(--border);
+  border-radius:12px; background:var(--surface-2);
+}
+.post p{ color:#cfd6e4 }
+.tag{
+  font-size:12px; color:var(--muted);
+  border:1px solid var(--border);
+  padding:2px 8px; border-radius:999px;
+}
+.post-footer{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; margin-top:6px;
+}
 
-/* Sidebar (About) refinements /
-.grid>aside.card{min-width:420px} / prevents over-condensing at mid widths */
-@media (max-width:999px){ .grid>aside.card{min-width:unset} }
+/* Sidebar (About) refinements */
+.grid>aside.card{ min-width:420px }
+@media (max-width:999px){
+  .grid>aside.card{ min-width:unset }
+}
 
 /* Buttons */
-.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:600;box-shadow:0 6px 16px rgba(79,140,255,.25)}
-.btn.ghost{background:transparent;color:var(--link);border:1px solid var(--border);box-shadow:none}
-.btn.sm{padding:7px 10px;font-size:14px}
-.btn:hover{filter:brightness(1.05)}
+.btn{
+  display:inline-block; padding:10px 14px; border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#fff; font-weight:600;
+  box-shadow:0 6px 16px rgba(79,140,255,.25);
+}
+.btn.ghost{
+  background:transparent; color:var(--link);
+  border:1px solid var(--border); box-shadow:none;
+}
+.btn.sm{ padding:7px 10px; font-size:14px }
+.btn:hover{ filter:brightness(1.05) }
 
 /* Lists and dividers */
-.list{display:grid;gap:12px}
-.divider{margin:16px 0;border:0;border-top:1px solid var(--border)}
-.flat{list-style:disc;padding-left:20px}
-.flat-ol{list-style:decimal;padding-left:20px}
+.list{ display:grid; gap:12px }
+.divider{ margin:16px 0; border:0; border-top:1px solid var(--border) }
+.flat{ list-style:disc; padding-left:20px }
+.flat-ol{ list-style:decimal; padding-left:20px }
 
 /* Code styling */
-pre,code{background:var(--surface-2);color:#e9ecf7;border-radius:8px}
-pre{padding:14px;overflow:auto;border:1px solid var(--border)}
-code{padding:2px 6px;border:1px solid var(--border)}
+pre,code{ background:var(--surface-2); color:#e9ecf7; border-radius:8px }
+pre{ padding:14px; overflow:auto; border:1px solid var(--border) }
+code{ padding:2px 6px; border:1px solid var(--border) }
 
 /* Footer */
 footer{
-margin-top:34px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);
-font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px
+  margin-top:34px; padding-top:16px;
+  border-top:1px solid var(--border);
+  color:var(--muted); font-size:14px;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
 }
-.contact a{margin-right:10px}
+.contact a{ margin-right:10px }
