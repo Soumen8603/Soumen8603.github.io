@@ -1,3 +1,4 @@
+/* ========== Design tokens ========== /
 :root{
 --bg:#0b0f19;
 --surface:#111729;
@@ -10,59 +11,56 @@
 --border:#22314d;
 --shadow:0 10px 25px rgba(0,0,0,.25);
 / layout tokens /
---container-max: 1100px; / readable line length cap / / centers with margin:auto / / /
---gutter: clamp(16px, 3.2vw, 28px); / responsive left/right padding / / /
+--container-max:1100px; / readable width cap / / /
+--gutter:clamp(18px,3.2vw,32px); / side padding inside container / / /
+--page-y:24px; / top/bottom breathing room */
 }
-/ ========== Base ========== */
-{ box-sizing:border-box } / ensure padding doesn't grow width unexpectedly / / /
+
+/* ========== Base ========== */
+{ box-sizing:border-box } / include padding in width calc /
 html,body{
 margin:0;
 background:var(--bg);
 color:var(--text);
 font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-/ Safe-area support (iOS notches) extends the gutter if needed /
-padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); / /
-padding-right:max(var(--gutter), env(safe-area-inset-right,0px)); / /
 }
-/ Links /
-a{ color:var(--link); text-decoration:none } / padding vs margin differences documented / / /
+body{ padding-block:var(--page-y) } / uniform top/bottom space across the page */
+
+/* Links /
+a{ color:var(--link); text-decoration:none } / link color preserved */
 a:hover{ text-decoration:underline }
-/ Fluid type /
+
+/* Fluid type */
 h1{ font-size:clamp(28px,4vw,44px); line-height:1.15; margin:0 }
 h2{ font-size:clamp(18px,2vw,22px); margin:0 0 8px }
 h3{ font-size:clamp(16px,1.7vw,20px); margin:0 }
 body, p, li{ font-size:clamp(15px,1.2vw,17px); line-height:1.7 }
-/ ========== Layout ========== /
-/ Shared container: centers content and creates equal gutters on both sides /
+
+/* ========== Core container ========== /
+/ The single source of truth for horizontal spacing and centering /
 .container{
 max-width:var(--container-max);
-margin-left:auto; / center the container / / /
-margin-right:auto; / center the container / / /
-padding-left:var(--gutter); / consistent left gutter / / /
-padding-right:var(--gutter); / consistent right gutter / / /
+width:100%;
+margin-left:auto; / center container /
+margin-right:auto; / center container /
+padding-left:var(--gutter); / equal start edge /
+padding-right:var(--gutter); / equal end edge */
 }
-/ Site wrapper just spaces vertical rhythm; horizontal spacing comes from body + container /
-.wrap{ width:100%; padding-top:28px; padding-bottom:84px }
-/ Optional full‑bleed utility for special sections only (keeps inner content aligned) /
-.full-bleed{
-width:100vw;
-margin-left:calc(50% - 50vw);
-margin-right:calc(50% - 50vw);
-}
-/ ========== Header ========== /
+
+/* ========== Header ========== /
 header{
 position:sticky; top:0; z-index:10;
 backdrop-filter:blur(6px);
 background:color-mix(in oklab,var(--bg) 78%, transparent);
 border-bottom:1px solid var(--border);
 }
-/ inner header content uses the same container so avatar and text line up /
 header .header-inner{
 display:flex; align-items:center; justify-content:space-between; gap:14px;
-max-width:var(--container-max); / align with main container / / /
-margin-inline:auto; / center the header content / / /
-padding-inline:var(--gutter); / keep avatar/text off edges / / /
 }
+/ Make header content use the same start/end as the page container /
+header .header-inner{ max-width:var(--container-max); margin-inline:auto; padding-inline:var(--gutter) } /
+
+/* Branding */
 .brand{ display:flex; align-items:center; gap:12px }
 .avatar-img{
 width:52px; height:52px; border-radius:50%;
@@ -77,18 +75,23 @@ border-radius:999px;
 background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08));
 }
 .pill:hover{ border-color:var(--link); color:#d9efff }
-/ ========== Sections ========== /
-/ Every top-level section is a .container to align with avatar edge /
-.hero.container{ display:grid; gap:14px; padding-top:28px; padding-bottom:10px }
+
+/* ========== Sections ========== /
+/ Apply container spacing to all main sections so text aligns with header /
+.hero, .grid, .section, .posts, .projects, .about, .contact, .footer-inner{
+max-width:var(--container-max);
+margin-inline:auto;
+padding-inline:var(--gutter); / same x-start/x-end everywhere */
+}
+
+.hero{ display:grid; gap:14px; padding-top:28px; padding-bottom:10px }
 .hero p{ color:var(--muted) }
-.grid.container{ display:grid; gap:18px; margin-top:18px; grid-template-columns:1fr }
-@media (min-width:760px){
-.grid.container{ grid-template-columns:3fr 2fr }
-}
-@media (min-width:1200px){
-.grid.container{ grid-template-columns:5fr 4fr }
-}
-/ Cards /
+
+.grid{ display:grid; gap:18px; margin-top:18px; grid-template-columns:1fr }
+@media (min-width:760px){ .grid{ grid-template-columns:3fr 2fr } }
+@media (min-width:1200px){ .grid{ grid-template-columns:5fr 4fr } }
+
+/* Cards */
 .card{
 background:linear-gradient(180deg,color-mix(in oklab,var(--surface) 92%, transparent),var(--surface));
 border:1px solid var(--border);
@@ -97,7 +100,8 @@ padding:16px;
 box-shadow:var(--shadow);
 }
 .meta{ color:var(--muted); font-size:13px }
-/ Posts /
+
+/* Posts */
 .post{
 display:grid; gap:10px; padding:14px;
 border:1px solid var(--border); border-radius:12px; background:var(--surface-2);
@@ -105,10 +109,12 @@ border:1px solid var(--border); border-radius:12px; background:var(--surface-2);
 .post p{ color:#cfd6e4 }
 .tag{ font-size:12px; color:var(--muted); border:1px solid var(--border); padding:2px 8px; border-radius:999px }
 .post-footer{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:6px }
-/ Sidebar sizing /
+
+/* Sidebar sizing */
 .grid>aside.card{ min-width:420px }
 @media (max-width:999px){ .grid>aside.card{ min-width:unset } }
-/ Buttons /
+
+/* Buttons */
 .btn{
 display:inline-block; padding:10px 14px; border-radius:10px;
 background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; font-weight:600;
@@ -117,31 +123,36 @@ box-shadow:0 6px 16px rgba(79,140,255,.25);
 .btn.ghost{ background:transparent; color:var(--link); border:1px solid var(--border); box-shadow:none }
 .btn.sm{ padding:7px 10px; font-size:14px }
 .btn:hover{ filter:brightness(1.05) }
-/ Lists and dividers /
+
+/* Lists and dividers */
 .list{ display:grid; gap:12px }
 .divider{ margin:16px 0; border:0; border-top:1px solid var(--border) }
 .flat{ list-style:disc; padding-left:20px }
 .flat-ol{ list-style:decimal; padding-left:20px }
-/ Code styling /
+
+/* Code styling */
 pre,code{ background:var(--surface-2); color:#e9ecf7; border-radius:8px }
 pre{ padding:14px; overflow:auto; border:1px solid var(--border) }
 code{ padding:2px 6px; border:1px solid var(--border) }
-/ Footer /
+
+/* ========== Footer ========== */
 footer{
 margin-top:34px; padding-top:16px; border-top:1px solid var(--border);
 color:var(--muted); font-size:14px;
 }
-footer .footer-inner{
+.footer-inner{
 display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-max-width:var(--container-max); / align with main content / / /
-margin-inline:auto; / center footer content / / /
-padding-inline:var(--gutter); / keep edges clear / / */
 }
 
-/* Optional: full-width sections that still respect gutters /
-.section-full{
-width:100%;
-padding-block:24px;
-/ Ensure at least gutter space on the sides even when background spans full width /
-padding-inline:max(var(--gutter), calc(50% - var(--container-max)/2)); / fluid background, fixed content technique / / */
+/* ========== Optional: full-width background with aligned content ========== */
+.full-bleed{
+width:100vw;
+margin-left:calc(50% - 50vw);
+margin-right:calc(50% - 50vw);
+}
+.full-bleed > .container,
+.full-bleed > .inner{
+max-width:var(--container-max);
+margin-inline:auto;
+padding-inline:var(--gutter);
 }
