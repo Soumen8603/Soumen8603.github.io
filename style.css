@@ -14,7 +14,7 @@
   /* layout */
   --container-max:1100px;
   /* smaller gutters than before */
-  --gutter: clamp(8px, 1vw, 10px);
+  --gutter: clamp(8px, 15px, 10px);
 }
 
 /* ========== Base ========== */
