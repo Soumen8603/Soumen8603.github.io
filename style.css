@@ -64,7 +64,7 @@ nav{ display:flex; gap:12px; font-size:14px }
 .hero{ display:grid; gap:14px; padding-block:28px 10px }
 .hero p{ color:var(--muted) }
 
-.grid{ display:grid; gap:18px; margin-top:18px; grid-template-columns:1fr }
+.grid{ display:grid; gap:18px; margin-top:18px; grid-template-columns:5fr 4fr }
 @media (min-width:760px){ .grid{ grid-template-columns:3fr 2fr } }
 @media (min-width:1200px){ .grid{ grid-template-columns:5fr 4fr } }
 
