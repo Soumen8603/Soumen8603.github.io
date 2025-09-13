@@ -12,19 +12,19 @@
   --shadow:0 10px 25px rgba(0,0,0,.25);
 
   /* layout */
-  --container-max:1100px;
-  /* smaller gutters than before */
-  --gutter: clamp(8px, 15px, 10px);
+  --container-max: 1400px;
+  --gutter: clamp(4px, 0.9vw, 12px);
 }
 
 /* ========== Base ========== */
 *{ box-sizing:border-box }
-html,body{ margin:0; background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
-
-/* Global side space (reduced) */
-body{ padding-inline:var(--gutter) }
-
-/* Prevent accidental overflow */
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+body{ padding-inline: var(--gutter) }
 html,body{ max-width:100%; overflow-x:hidden }
 
 /* Type */
@@ -37,9 +37,9 @@ a:hover{ text-decoration:underline }
 
 /* ========== Shared container ========== */
 .container{
-  max-width:var(--container-max);
-  margin-inline:auto;
-  padding-inline:var(--gutter);  /* matches smaller gutters */
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
 /* ========== Header ========== */
@@ -50,7 +50,6 @@ header{
   border-bottom:1px solid var(--border);
 }
 .header-inner{ display:flex; align-items:center; justify-content:space-between; gap:14px }
-
 .brand{ display:flex; align-items:center; gap:12px }
 .avatar-img{ width:52px; height:52px; border-radius:50%; object-fit:cover; border:2px solid var(--border); background:#fff; box-shadow:var(--shadow) }
 .title{ font-weight:700 }
@@ -60,13 +59,37 @@ nav{ display:flex; gap:12px; font-size:14px }
 
 /* ========== Sections ========== */
 .wrap{ padding-block:28px 84px }
-
 .hero{ display:grid; gap:14px; padding-block:28px 10px }
 .hero p{ color:var(--muted) }
 
-.grid{ display:grid; gap:18px; margin-top:18px; grid-template-columns:5fr 4fr }
-@media (min-width:760px){ .grid{ grid-template-columns:3fr 2fr } }
-@media (min-width:1200px){ .grid{ grid-template-columns:5fr 4fr } }
+/* MOBILE-FIRST: default to one column */
+.grid{
+  display:grid;
+  gap:18px;
+  margin-top:18px;
+  grid-template-columns: 1fr;      /* one column by default */
+  grid-auto-flow: row;
+}
+
+/* Ensure children can shrink on small screens */
+.grid > main{ min-width:0 }
+.grid > aside{ min-width:0 }
+.grid > aside.card{ min-width:0 }   /* no fixed min width on phones */
+
+/* TABLET: switch to two columns */
+@media (min-width: 761px){
+  .grid{
+    grid-template-columns: 3fr 2fr;  /* main | aside */
+  }
+}
+
+/* DESKTOP: wider two-column ratio and optional min-width for aside */
+@media (min-width: 1000px){
+  .grid{
+    grid-template-columns: 5fr 4fr;
+  }
+  .grid > aside.card{ min-width: 420px }
+}
 
 /* Cards */
 .card{
@@ -83,10 +106,6 @@ nav{ display:flex; gap:12px; font-size:14px }
 .post p{ color:#cfd6e4 }
 .tag{ font-size:12px; color:var(--muted); border:1px solid var(--border); padding:2px 8px; border-radius:999px }
 .post-footer{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:6px }
-
-/* Sidebar sizing */
-.grid>aside.card{ min-width:420px }
-@media (max-width:999px){ .grid>aside.card{ min-width:unset } }
 
 /* Buttons */
 .btn{ display:inline-block; padding:10px 14px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; font-weight:600; box-shadow:0 6px 16px rgba(79,140,255,.25) }
@@ -108,3 +127,8 @@ code{ padding:2px 6px; border:1px solid var(--border) }
 /* Footer */
 footer{ margin-top:34px; padding-top:16px; border-top:1px solid var(--border); color:var(--muted); font-size:14px }
 .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px }
+
+/* FINAL SAFETY OVERRIDE for phones (keep at end) */
+@media (max-width: 760px){
+  body .grid{ grid-template-columns: 1fr !important }
+}
