@@ -28,7 +28,7 @@ body, p, li{font-size:clamp(15px,1.2vw,17px);line-height:1.7} / readable body si
 .wrap{
 width:100%;
 max-width:none; / remove narrow cap /
-margin:0;
+margin:10px;
 padding:28px min(5vw,28px) 84px; / responsive side padding /
 } / Full-width container replacing max-width */
 
