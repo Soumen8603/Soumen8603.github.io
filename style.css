@@ -10,58 +10,37 @@
   --link:#9ad1ff;
   --border:#22314d;
   --shadow:0 10px 25px rgba(0,0,0,.25);
-  --container-max: 1100px;
-  --gutter: clamp(14px, 2.8vw, 28px);  /* slightly larger gutters */
+
+  /* layout */
+  --container-max:1100px;                 /* readable width */
+  --gutter:clamp(16px,3vw,28px);          /* side gutters */
 }
 
 /* ========== Base ========== */
 *{ box-sizing:border-box }
-html, body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
+html,body{ margin:0; background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
 
-/* Hard page gutters: apply to html so everything respects side spacing */
-html{
-  padding-inline: var(--gutter); /* left+right page space */
-} /* logical padding ensures space on both sides responsively */
+/* Global side space so nothing hugs the edges */
+body{ padding-inline:var(--gutter) } /* consistent left & right space on every page */  /* [8][4] */
 
-/* Prevent unintended horizontal overflow from 100vw elements */
-html, body{
-  max-width: 100%;
-  overflow-x: hidden;
-} /* guards against 100vw including scrollbar width on Windows */  /* [1][2][5] */
+/* Prevent accidental overflow from 100vw patterns */
+html,body{ max-width:100%; overflow-x:hidden } /* [21] */
 
-/* Links */
-a{ color:var(--link); text-decoration:none }
-a:hover{ text-decoration:underline }
-
-/* Fluid type */
+/* Type */
 h1{ font-size:clamp(28px,4vw,44px); line-height:1.15; margin:0 }
 h2{ font-size:clamp(18px,2vw,22px); margin:0 0 8px }
 h3{ font-size:clamp(16px,1.7vw,20px); margin:0 }
-body, p, li{ font-size:clamp(15px,1.2vw,17px); line-height:1.7 }
+body,p,li{ font-size:clamp(15px,1.2vw,17px); line-height:1.7 }
+a{ color:var(--link); text-decoration:none }
+a:hover{ text-decoration:underline }
 
-/* ========== Layout ========== */
+/* ========== Shared container ========== */
+/* This centers all site sections and aligns them on the same x-start */
 .container{
   max-width:var(--container-max);
-  margin-left:auto;
-  margin-right:auto;
-  padding-left:var(--gutter);
-  padding-right:var(--gutter);
+  margin-inline:auto;                 /* center */
+  padding-inline:var(--gutter);       /* inner gutters match page gutters */
 }
-
-/* Site wrapper */
-.wrap{ width:100%; padding-top:28px; padding-bottom:84px }
-
-/* Only use full‑bleed on purpose; avoid 100vw for normal blocks */
-.full-bleed{
-  width:100%;
-  margin-left:calc(50% - 50vw + var(--gutter));
-  margin-right:calc(50% - 50vw + var(--gutter));
-} /* keeps visible page gutters even on full-bleed sections */ /* [3][12] */
 
 /* ========== Header ========== */
 header{
@@ -69,39 +48,25 @@ header{
   backdrop-filter:blur(6px);
   background:color-mix(in oklab,var(--bg) 78%, transparent);
   border-bottom:1px solid var(--border);
-  /* align header with page gutters */
-  padding-inline: var(--gutter);
 }
-header .header-inner{
-  display:flex; align-items:center; justify-content:space-between; gap:14px;
-}
+.header-inner{ display:flex; align-items:center; justify-content:space-between; gap:14px }
 
 .brand{ display:flex; align-items:center; gap:12px }
-.avatar-img{
-  width:52px; height:52px; border-radius:50%;
-  object-fit:cover; border:2px solid var(--border);
-  background:#fff; box-shadow:var(--shadow);
-}
+.avatar-img{ width:52px; height:52px; border-radius:50%; object-fit:cover; border:2px solid var(--border); background:#fff; box-shadow:var(--shadow) }
 .title{ font-weight:700 }
 nav{ display:flex; gap:12px; font-size:14px }
-.pill{
-  color:var(--muted); padding:6px 12px; border:1px solid var(--border);
-  border-radius:999px;
-  background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08));
-}
+.pill{ color:var(--muted); padding:6px 12px; border:1px solid var(--border); border-radius:999px; background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08)) }
 .pill:hover{ border-color:var(--link); color:#d9efff }
 
 /* ========== Sections ========== */
-.hero.container{ display:grid; gap:14px; padding-top:28px; padding-bottom:10px }
+.wrap{ padding-block:28px 84px } /* top/bottom only; left/right handled by body/container */
+
+.hero{ display:grid; gap:14px; padding-block:28px 10px }
 .hero p{ color:var(--muted) }
 
-.grid.container{ display:grid; gap:18px; margin-top:18px; grid-template-columns:1fr }
-@media (min-width:760px){
-  .grid.container{ grid-template-columns:3fr 2fr }
-}
-@media (min-width:1200px){
-  .grid.container{ grid-template-columns:5fr 4fr }
-}
+.grid{ display:grid; gap:18px; margin-top:18px; grid-template-columns:1fr }
+@media (min-width:760px){ .grid{ grid-template-columns:3fr 2fr } }
+@media (min-width:1200px){ .grid{ grid-template-columns:5fr 4fr } }
 
 /* Cards */
 .card{
@@ -114,10 +79,7 @@ nav{ display:flex; gap:12px; font-size:14px }
 .meta{ color:var(--muted); font-size:13px }
 
 /* Posts */
-.post{
-  display:grid; gap:10px; padding:14px;
-  border:1px solid var(--border); border-radius:12px; background:var(--surface-2);
-}
+.post{ display:grid; gap:10px; padding:14px; border:1px solid var(--border); border-radius:12px; background:var(--surface-2) }
 .post p{ color:#cfd6e4 }
 .tag{ font-size:12px; color:var(--muted); border:1px solid var(--border); padding:2px 8px; border-radius:999px }
 .post-footer{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:6px }
@@ -127,11 +89,7 @@ nav{ display:flex; gap:12px; font-size:14px }
 @media (max-width:999px){ .grid>aside.card{ min-width:unset } }
 
 /* Buttons */
-.btn{
-  display:inline-block; padding:10px 14px; border-radius:10px;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; font-weight:600;
-  box-shadow:0 6px 16px rgba(79,140,255,.25);
-}
+.btn{ display:inline-block; padding:10px 14px; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; font-weight:600; box-shadow:0 6px 16px rgba(79,140,255,.25) }
 .btn.ghost{ background:transparent; color:var(--link); border:1px solid var(--border); box-shadow:none }
 .btn.sm{ padding:7px 10px; font-size:14px }
 .btn:hover{ filter:brightness(1.05) }
@@ -148,10 +106,8 @@ pre{ padding:14px; overflow:auto; border:1px solid var(--border) }
 code{ padding:2px 6px; border:1px solid var(--border) }
 
 /* Footer */
-footer{
-  margin-top:34px; padding-top:16px; border-top:1px solid var(--border);
-  color:var(--muted); font-size:14px;
-  padding-inline: var(--gutter); /* align with page gutters */
-}
-footer .footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px }
-.contact a{ margin-right:10px }
+footer{ margin-top:34px; padding-top:16px; border-top:1px solid var(--border); color:var(--muted); font-size:14px }
+.footer-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px }
+
+/* Utility: neutralize <br> gaps used in markup so spacing comes from CSS, not <br> */
+br{ display:none } /* optional: remove if <br> must remain visible */  /* [9][11] */
